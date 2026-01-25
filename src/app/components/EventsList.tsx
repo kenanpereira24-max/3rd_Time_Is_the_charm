@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Code, Brain, Gamepad2, Globe, Mic, Coffee, Video, Users, Puzzle, 
-  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram 
+  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight 
 } from 'lucide-react';
 import { RetroHeading } from './ArcadeElements';
 import { FadeInUp, StaggerContainer, StaggerItem } from './ScrollAnimations';
@@ -28,9 +28,9 @@ function formatDate(dateStr: string) {
   return `${day}${suffix} ${monthNames[month]}`;
 }
 
-// --- DATA: Chronologically Sorted & Updated ---
+// --- DATA ---
 const events = [
-  // 1. Interaction Event (Feb 2)
+  // 1. Interaction Event
   {
     id: 'nt6',
     title: 'Interaction Event',
@@ -40,6 +40,7 @@ const events = [
     description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
+    // 👇 PASTE LINK HERE. If "#", it shows "Opening Soon".
     registration_link: "#", 
     pocs: [
       { name: 'Keren', phone: '+91 8129498109' },
@@ -47,7 +48,7 @@ const events = [
       { name: 'Lebina', phone: '+91 7695856564' }
     ]
   },
-  // 2. Workshop I (Feb 3)
+  // 2. Workshop I
   {
     id: 'w1',
     title: 'Workshop I',
@@ -63,7 +64,7 @@ const events = [
       { name: 'Naman', phone: '+91 8127390863' }
     ]
   },
-  // 3. Pitch or Perish (Feb 4)
+  // 3. Pitch or Perish
   {
     id: 'nt1',
     title: 'Pitch or Perish',
@@ -79,12 +80,12 @@ const events = [
       { name: 'Paul', phone: '+91 9606867886' }
     ]
   },
-  // 4. Trust Issues (Feb 5-6)
+  // 4. Trust Issues
   {
     id: 't3',
     title: 'Trust Issues',
     day: 'Thu-Fri',
-    date: '06-02-2026', // Updated to show 6th
+    date: '06-02-2026', 
     icon: Lock,
     description: '', 
     color: 'from-green-500 to-emerald-600',
@@ -95,7 +96,7 @@ const events = [
       { name: 'Canice', phone: '+91 7057569482' }
     ]
   },
-  // 5. Hackathon (Feb 7-9)
+  // 5. Hackathon
   {
     id: 't6',
     title: 'Hackathon',
@@ -105,6 +106,7 @@ const events = [
     description: 'Theme: Innovation for a Better Tomorrow. Day 1 (Prelims), Day 2 (Remote build), Day 3 (Finals). Solve real-world problem statements under 10 thematic areas.',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
+    // EXAMPLE: Putting a link here
     registration_link: "#", 
     pocs: [
       { name: 'Karthik', phone: '+91 7019348614' },
@@ -112,7 +114,7 @@ const events = [
       { name: 'Tharun(IT)', phone: '+91 7539932035' }
     ]
   },
-  // 6. Escape Room (Feb 10)
+  // 6. Escape Room
   {
     id: 'nt2',
     title: 'Escape Room',
@@ -128,7 +130,7 @@ const events = [
       { name: 'Keren', phone: '+91 8129498109' }
     ]
   },
-  // 7. Browser Blitz (Feb 11)
+  // 7. Browser Blitz
   {
     id: 't4',
     title: 'Browser Blitz',
@@ -144,7 +146,7 @@ const events = [
       { name: 'Arunima', phone: '+91 8794788693' }
     ]
   },
-  // 8. HackStorm (Feb 12)
+  // 8. HackStorm
   {
     id: 't5',
     title: 'HackStorm',
@@ -160,7 +162,7 @@ const events = [
       { name: 'Arnav', phone: '+91 9144914517' }
     ]
   },
-  // 9. Code Relay (Feb 13)
+  // 9. Code Relay
   {
     id: 't1',
     title: 'Code Relay: The Last Commit',
@@ -177,7 +179,7 @@ const events = [
       { name: 'Neha', phone: '+91 9390336410' }
     ]
   },
-  // 10. Workshop III (Feb 14)
+  // 10. Workshop III
   {
     id: 'w2',
     title: 'Workshop III',
@@ -193,7 +195,7 @@ const events = [
       { name: 'Naman', phone: '+91 8127390863' }
     ]
   },
-  // 11. Beat the Bot (Feb 16)
+  // 11. Beat the Bot
   {
     id: 't2',
     title: 'Beat the Bot',
@@ -206,10 +208,10 @@ const events = [
     registration_link: "#", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
-      { name: 'Tharun J', phone: '+91 8904739898' }
+      { name: 'Tharun J', phone: '+91 7539932035' }
     ]
   },
-  // 12. Ace Clutch (Feb 17-18)
+  // 12. Ace Clutch
   {
     id: 'nt5',
     title: 'Ace Clutch',
@@ -225,7 +227,7 @@ const events = [
       { name: 'Aayush', phone: '+91 8588802698' }
     ]
   },
-  // 13. Workshop by Struxnet (Feb 19)
+  // 13. Workshop by Struxnet
   {
     id: 'w3',
     title: 'Workshop by Struxnet',
@@ -241,7 +243,7 @@ const events = [
       { name: 'Arnav', phone: '+91 9144914517' }
     ]
   },
-  // 14. Freeze Quest (Feb 20)
+  // 14. Freeze Quest
   {
     id: 'nt3',
     title: 'Freeze Quest',
@@ -257,7 +259,7 @@ const events = [
       { name: 'Canice', phone: '+91 7057569482' }
     ]
   },
-  // 15. Flick Fiesta (Feb 23)
+  // 15. Flick Fiesta
   {
     id: 'nt4',
     title: 'Flick Fiesta',
@@ -374,14 +376,10 @@ export function EventsList() {
                     }}></div>
                     
                     <div className="relative z-10">
-                      
-                      {/* --- UPDATED HEADER LAYOUT --- */}
                       <div className="flex justify-between items-start mb-2">
-                        {/* Date is now at the top left, replacing the 'Day' badge */}
                         <span className="inline-block px-3 py-1 bg-black text-white text-xs font-bold rounded-md" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.6rem' }}>
                           {formatDate(event.date)}
                         </span>
-                        
                         <div className="w-10 h-10 bg-black flex items-center justify-center rounded-lg shadow-sm">
                           <Icon size={20} className="text-white" />
                         </div>
@@ -390,8 +388,6 @@ export function EventsList() {
                       <h3 className="text-lg font-bold mt-2" style={{ fontFamily: '"Press Start 2P", cursive', lineHeight: '1.4', fontSize: '0.75rem' }}>
                         {event.title}
                       </h3>
-                      {/* ----------------------------- */}
-
                     </div>
                   </div>
 
@@ -402,12 +398,32 @@ export function EventsList() {
                         {event.category}
                       </span>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-sm line-clamp-3 flex-grow">
+                    
+                    <p className="text-gray-700 leading-relaxed text-sm line-clamp-3 mb-4 flex-grow">
                       {event.description}
                     </p>
+
+                    {/* --- REGISTRATION BUTTON (IN CARD) --- */}
+                    <div className="mb-4">
+                       {event.registration_link && event.registration_link !== "#" ? (
+                         <a 
+                           href={event.registration_link} 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           onClick={(e) => e.stopPropagation()} 
+                           className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors"
+                         >
+                           REGISTER NOW
+                         </a>
+                       ) : (
+                         <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">
+                           OPENING SOON
+                         </div>
+                       )}
+                    </div>
                     
                     {/* POC Names Only */}
-                    <div className="mt-4 pt-4 border-t-2 border-gray-100">
+                    <div className="pt-4 border-t-2 border-gray-100 mt-auto">
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">POCs</p>
                       <div className="flex flex-wrap gap-2">
                         {event.pocs.map((p: any, i: number) => (
@@ -424,15 +440,15 @@ export function EventsList() {
           })}
         </StaggerContainer>
 
-        {/* --- NEW SECTION: SOCIAL MEDIA & ANNOUNCEMENTS --- */}
+        {/* --- SOCIAL MEDIA & ANNOUNCEMENTS --- */}
         <FadeInUp delay={0.4}>
           <div className="mt-16 text-center space-y-8">
             
-            {/* Pink Note Banner */}
-            <div className="bg-pink-400 p-6 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-w-4xl mx-auto transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            {/* NOTE BANNER - RESTORED: Reduced Width (max-w-3xl) & Height (p-3) */}
+            <div className="bg-pink-400 p-3 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-2xl mx-auto">
               <p className="text-sm md:text-base font-bold text-black flex items-center justify-center gap-3">
                 <span className="bg-black text-white px-2 py-1 rounded text-xs" style={{ fontFamily: '"Press Start 2P", cursive' }}>NOTE:</span>
-                More events and surprise sessions will be announced soon! Follow us on social media for updates.
+                 Follow our Instagram page for updates.
               </p>
             </div>
 
@@ -451,7 +467,6 @@ export function EventsList() {
                 </div>
               </a>
             </div>
-
           </div>
         </FadeInUp>
 
@@ -469,7 +484,6 @@ export function EventsList() {
             {/* Modal Content */}
             <div className="relative bg-white w-full max-w-2xl max-h-[85vh] flex flex-col rounded-3xl border-4 border-black shadow-[0_0_40px_rgba(255,255,0,0.5)] transform transition-all scale-100 animate-in fade-in zoom-in duration-200 overflow-hidden">
               
-              {/* Scrollable Container */}
               <div className="overflow-y-auto flex-1">
                 
                 {/* Modal Header */}
@@ -509,7 +523,6 @@ export function EventsList() {
                 {/* Modal Body */}
                 <div className="p-8 bg-white">
                   
-                  {/* --- CENTERED DATE --- */}
                   <div className="flex justify-center mb-8">
                     <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[200px] justify-center shadow-sm">
                       <Calendar className="text-purple-600" size={24} />
@@ -527,8 +540,38 @@ export function EventsList() {
                     </p>
                   </div>
 
-                  {/* MODAL POC SECTION */}
-                  <div className="border-t-2 border-gray-100 pt-6 mb-8">
+                  {/* --- MODAL VIEW: REGISTER BUTTON --- */}
+                  <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
+                      <div className="relative z-10">
+                         <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
+                            <Ticket size={24} /> REGISTER
+                         </h3>
+                         
+                         {selectedEvent.registration_link && selectedEvent.registration_link !== "#" ? (
+                           <>
+                             <p className="font-bold mb-4">Secure your spot now!</p>
+                             <a 
+                               href={selectedEvent.registration_link}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
+                             >
+                               REGISTER NOW <ExternalLink size={16}/>
+                             </a>
+                           </>
+                         ) : (
+                           <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">
+                             REGISTRATIONS OPENING SOON
+                           </button>
+                         )}
+                      </div>
+                      <div className="absolute inset-0 opacity-10" style={{
+                          backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
+                      }}></div>
+                  </div>
+
+                  {/* POC SECTION */}
+                  <div className="border-t-2 border-gray-100 pt-6">
                     <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Event Coordinators</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {selectedEvent.pocs.map((poc: any, i: number) => (
@@ -546,34 +589,6 @@ export function EventsList() {
                         </div>
                       ))}
                     </div>
-                  </div>
-
-                  {/* REGISTRATION SECTION - DYNAMIC BUTTON */}
-                  <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden">
-                      <div className="relative z-10">
-                         <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
-                            <Ticket size={24} /> REGISTER
-                         </h3>
-                         <p className="font-bold mb-4">Ready to participate? Secure your spot now!</p>
-                         
-                         {selectedEvent.registration_link && selectedEvent.registration_link !== "#" ? (
-                           <a 
-                             href={selectedEvent.registration_link}
-                             target="_blank"
-                             rel="noopener noreferrer"
-                             className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
-                           >
-                             REGISTER NOW <ExternalLink size={16}/>
-                           </a>
-                         ) : (
-                           <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed hover:scale-105 transition-transform">
-                             REGISTRATIONS OPENING SOON
-                           </button>
-                         )}
-                      </div>
-                      <div className="absolute inset-0 opacity-10" style={{
-                          backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
-                      }}></div>
                   </div>
 
                 </div>
