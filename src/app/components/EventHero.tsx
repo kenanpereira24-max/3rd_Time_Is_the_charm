@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Clock } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { ContinuousTetris } from './ContinuousTetris';
 import { StarryBackground } from './StarryBackground';
 import { RetroHeading, ArcadeButton, PixelDot } from './ArcadeElements';
@@ -34,7 +34,6 @@ export function EventHero() {
           <FadeInUp delay={0.4}>
             {/* Large Pixelated FOOBAR 10.0 Logo */}
             <div className="mb-6 flex flex-col items-center justify-center gap-3">
-              {/* FOOBAR Text in Pixelated Yellow */}
               <div 
                 className="text-yellow-400"
                 style={{
@@ -43,16 +42,12 @@ export function EventHero() {
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   lineHeight: '1',
-                  textShadow: `
-                    3px 3px 0 #000,
-                    6px 6px 0 rgba(0,0,0,0.3)
-                  `,
+                  textShadow: `3px 3px 0 #000, 6px 6px 0 rgba(0,0,0,0.3)`,
                 }}
               >
                 FOOBAR
               </div>
 
-              {/* 10.0 Text in Pixelated Burnt Orange */}
               <div 
                 style={{
                   fontFamily: '"Press Start 2P", cursive',
@@ -61,10 +56,7 @@ export function EventHero() {
                   textTransform: 'uppercase',
                   lineHeight: '1',
                   color: '#FF6B35',
-                  textShadow: `
-                    3px 3px 0 #000,
-                    6px 6px 0 rgba(0,0,0,0.3)
-                  `,
+                  textShadow: `3px 3px 0 #000, 6px 6px 0 rgba(0,0,0,0.3)`,
                 }}
               >
                 10.0
@@ -103,10 +95,10 @@ export function EventHero() {
             </p>
           </FadeInUp>
 
-          {/* Event Details - Horizontal Layout */}
-          <StaggerContainer className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            <StaggerItem>
-              <div className="flex items-center gap-3 p-4 bg-cyan-400 text-black hover:bg-cyan-300 transition-colors" style={{
+          {/* Centered Date Block */}
+          <div className="flex justify-center">
+            <FadeInUp delay={1.0}>
+              <div className="flex items-center gap-3 p-4 bg-cyan-400 text-black hover:bg-cyan-300 transition-colors mx-auto" style={{
                 clipPath: `polygon(
                   0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
                   calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
@@ -117,51 +109,12 @@ export function EventHero() {
                 <Calendar size={28} />
                 <div className="text-left">
                   <div className="text-xs font-bold" style={{ fontFamily: '"Press Start 2P", cursive' }}>DATE</div>
-                  <div className="font-bold text-sm">Jan 27 - Feb 6, 2026</div>
+                  <div className="font-bold text-sm">Jan 30 Onwards</div>
                 </div>
               </div>
-            </StaggerItem>
+            </FadeInUp>
+          </div>
 
-            <StaggerItem>
-              <div className="flex items-center gap-3 p-4 bg-green-400 text-black hover:bg-green-300 transition-colors" style={{
-                clipPath: `polygon(
-                  0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
-                  calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
-                  100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
-                  8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
-                )`
-              }}>
-                <MapPin size={28} />
-                <div className="text-left">
-                  <div className="text-xs font-bold" style={{ fontFamily: '"Press Start 2P", cursive' }}>VENUE</div>
-                  <div className="font-bold text-sm">Christ University Kengeri</div>
-                </div>
-              </div>
-            </StaggerItem>
-
-            <StaggerItem>
-              <div className="flex items-center gap-3 p-4 bg-pink-400 text-black hover:bg-pink-300 transition-colors" style={{
-                clipPath: `polygon(
-                  0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
-                  calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
-                  100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
-                  8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
-                )`
-              }}>
-                <Clock size={28} />
-                <div className="text-left">
-                  <div className="text-xs font-bold" style={{ fontFamily: '"Press Start 2P", cursive' }}>DURATION</div>
-                  <div className="font-bold text-sm">6 Days of Innovation</div>
-                </div>
-              </div>
-            </StaggerItem>
-          </StaggerContainer>
-
-          <FadeInUp delay={1.2}>
-            <ArcadeButton onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}>
-              REGISTER NOW! 🎮
-            </ArcadeButton>
-          </FadeInUp>
         </div>
       </div>
     </section>
