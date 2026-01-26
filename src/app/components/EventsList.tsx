@@ -344,7 +344,8 @@ export function EventsList() {
         {/* Events Grid */}
         <StaggerContainer 
             key={selectedCategory} 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            // FIXED: Added grid-cols-1 so it displays on mobile
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredEvents.map((event) => {
             const Icon = event.icon;
@@ -404,22 +405,22 @@ export function EventsList() {
 
                     {/* --- REGISTRATION BUTTON (IN CARD) --- */}
                     <div className="mb-4">
-                       {/* UPDATED LOGIC: If registration_link is null, show nothing */}
-                       {!event.registration_link ? null : event.registration_link !== "#" ? (
-                         <a 
-                           href={event.registration_link} 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           onClick={(e) => e.stopPropagation()} 
-                           className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors"
-                         >
-                           REGISTER NOW
-                         </a>
-                       ) : (
-                         <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">
-                           OPENING SOON
-                         </div>
-                       )}
+                        {/* UPDATED LOGIC: If registration_link is null, show nothing */}
+                        {!event.registration_link ? null : event.registration_link !== "#" ? (
+                          <a 
+                            href={event.registration_link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            onClick={(e) => e.stopPropagation()} 
+                            className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors"
+                          >
+                            REGISTER NOW
+                          </a>
+                        ) : (
+                          <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">
+                            OPENING SOON
+                          </div>
+                        )}
                     </div>
                     
                     {/* POC Names Only */}
@@ -448,7 +449,7 @@ export function EventsList() {
             <div className="bg-pink-400 py-2 px-4 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-2xl mx-auto">
               <p className="text-xs md:text-sm font-bold text-black flex items-center justify-center gap-3">
                 <span className="bg-black text-white px-2 py-1 rounded text-[10px]" style={{ fontFamily: '"Press Start 2P", cursive' }}>NOTE:</span>
-                 Follow our Instagram page for updates.
+                  Follow our Instagram page for updates.
               </p>
             </div>
 
@@ -544,27 +545,27 @@ export function EventsList() {
                   {selectedEvent.registration_link && (
                     <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
                       <div className="relative z-10">
-                         <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
-                            <Ticket size={24} /> REGISTER
-                         </h3>
-                         
-                         {selectedEvent.registration_link !== "#" ? (
-                           <>
-                             <p className="font-bold mb-4">Secure your spot now!</p>
-                             <a 
-                               href={selectedEvent.registration_link}
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
-                             >
-                               REGISTER NOW <ExternalLink size={16}/>
-                             </a>
-                           </>
-                         ) : (
-                           <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">
-                             REGISTRATIONS OPENING SOON
-                           </button>
-                         )}
+                          <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
+                             <Ticket size={24} /> REGISTER
+                          </h3>
+                          
+                          {selectedEvent.registration_link !== "#" ? (
+                            <>
+                              <p className="font-bold mb-4">Secure your spot now!</p>
+                              <a 
+                                href={selectedEvent.registration_link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
+                              >
+                                REGISTER NOW <ExternalLink size={16}/>
+                              </a>
+                            </>
+                          ) : (
+                            <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">
+                              REGISTRATIONS OPENING SOON
+                            </button>
+                          )}
                       </div>
                       <div className="absolute inset-0 opacity-10" style={{
                           backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
