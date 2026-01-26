@@ -37,9 +37,11 @@ const events = [
     day: 'Monday',
     date: '02-02-2026',
     icon: Coffee,
+    // Added timings to description
     description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 1pm and 4pm to 5pm',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
+    // Set to null to remove button entirely
     registration_link: null, 
     pocs: [
       { name: 'Keren', phone: '+91 8129498109' },
@@ -105,12 +107,12 @@ const events = [
     description: 'Theme: Innovation for a Better Tomorrow. Day 1 (Prelims), Day 2 (Remote build), Day 3 (Finals). Solve real-world problem statements under 10 thematic areas.',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
+    // EXAMPLE: Putting a link here
     registration_link: "#", 
     pocs: [
       { name: 'Karthik', phone: '+91 7019348614' },
       { name: 'Rupal', phone: '+91 9606998764' },
-      // UPDATED: Removed "(IT)" from name
-      { name: 'Tharun', phone: '+91 7539932035' }
+      { name: 'Tharun(IT)', phone: '+91 7539932035' }
     ]
   },
   // 6. Escape Room
@@ -404,6 +406,7 @@ export function EventsList() {
 
                     {/* --- REGISTRATION BUTTON (IN CARD) --- */}
                     <div className="mb-4">
+                       {/* UPDATED LOGIC: If registration_link is null/falsy, show nothing. If "#", show Opening Soon. Else show Register. */}
                        {!event.registration_link ? null : event.registration_link !== "#" ? (
                          <a 
                            href={event.registration_link} 
@@ -443,11 +446,11 @@ export function EventsList() {
         <FadeInUp delay={0.4}>
           <div className="mt-16 text-center space-y-8">
             
-            {/* NOTE BANNER - UPDATED TEXT */}
+            {/* NOTE BANNER - RESTORED: Reduced Width (max-w-3xl) & Height (p-3) */}
             <div className="bg-pink-400 p-3 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-2xl mx-auto">
               <p className="text-sm md:text-base font-bold text-black flex items-center justify-center gap-3">
                 <span className="bg-black text-white px-2 py-1 rounded text-xs" style={{ fontFamily: '"Press Start 2P", cursive' }}>NOTE:</span>
-                 Follow us on Instagram for more updates.
+                 Follow our Instagram page for updates.
               </p>
             </div>
 
@@ -540,6 +543,7 @@ export function EventsList() {
                   </div>
 
                   {/* --- MODAL VIEW: REGISTER BUTTON --- */}
+                  {/* UPDATED LOGIC: Only render the container if there is a link or it is '#' */}
                   {selectedEvent.registration_link && (
                     <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
                         <div className="relative z-10">
@@ -566,4 +570,39 @@ export function EventsList() {
                            )}
                         </div>
                         <div className="absolute inset-0 opacity-10" style={{
-                            backgroundImage: 'repeating-linear-gradient(-45deg, #
+                            backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
+                        }}></div>
+                    </div>
+                  )}
+
+                  {/* POC SECTION */}
+                  <div className="border-t-2 border-gray-100 pt-6">
+                    <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Event Coordinators</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {selectedEvent.pocs.map((poc: any, i: number) => (
+                        <div key={i} className="flex items-center justify-between bg-gray-50 p-3 rounded-xl border-2 border-gray-100 hover:border-black transition-colors">
+                           <div className="flex items-center gap-3">
+                               <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">
+                                 {poc.name.charAt(0)}
+                               </div>
+                               <span className="font-bold text-gray-800 text-sm">{poc.name}</span>
+                           </div>
+                           <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-gray-200">
+                               <Phone size={14} className="text-green-600"/>
+                               <span className="font-mono text-xs font-bold text-gray-600">{poc.phone}</span>
+                           </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+      </div>
+    </section>
+  );
+}
