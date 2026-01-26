@@ -112,7 +112,7 @@ const events = [
     pocs: [
       { name: 'Karthik', phone: '+91 7019348614' },
       { name: 'Rupal', phone: '+91 9606998764' },
-      { name: 'Tharun(IT)', phone: '+91 7539932035' }
+      { name: 'Tharun', phone: '+91 7539932035' }
     ]
   },
   // 6. Escape Room
