@@ -138,13 +138,6 @@ export function Navbar() {
             >
               EVENTS
             </button>
-            <button
-              onClick={() => scrollToSection('register')}
-              className="w-full px-6 py-3 bg-yellow-400 text-black hover:bg-yellow-300 transition-all font-bold mt-2"
-              style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.7rem' }}
-            >
-              REGISTER
-            </button>
           </div>
         </div>
       )}
