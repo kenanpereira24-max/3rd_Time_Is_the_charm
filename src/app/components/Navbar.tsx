@@ -17,24 +17,30 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-yellow-400 shadow-lg">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Left: Christ Logo + ASCII Logo */}
-          <div className="flex items-center gap-3 z-10">
+        <div className="flex justify-between items-center h-16 md:h-20"> {/* Adjusted height for mobile/desktop */}
+          
+          {/* Left: Christ Logo + ASCII Logo (Responsive Sizes) */}
+          <div className="flex items-center gap-2 md:gap-3 z-10">
             <img 
               src={christLogo} 
               alt="Christ University" 
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain" 
             />
             <img 
               src={asciiLogo} 
               alt="ASCII Logo" 
-              className="h-12 md:h-16 w-auto object-contain"
+              className="h-10 sm:h-12 md:h-16 w-auto object-contain" 
             />
           </div>
 
           {/* Center: FOOBAR Text */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <h1 className="text-base md:text-2xl font-bold text-yellow-400" style={{ fontFamily: '"Press Start 2P", cursive', textShadow: '3px 3px 0px rgba(255,255,0,0.3)', lineHeight: '1.4' }}>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-full text-center pointer-events-none">
+            <h1 className="text-xs sm:text-sm md:text-2xl font-bold text-yellow-400 truncate px-2" 
+                style={{ 
+                  fontFamily: '"Press Start 2P", cursive', 
+                  textShadow: '3px 3px 0px rgba(255,255,0,0.3)', 
+                  lineHeight: '1.4' 
+                }}>
               FOOBAR 10.0
             </h1>
           </div>
