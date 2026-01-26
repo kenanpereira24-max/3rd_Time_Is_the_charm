@@ -151,7 +151,7 @@ export function Registration() {
                   <div className="mt-2">
                     <div className="flex items-center gap-2 bg-white p-2 border-2 border-black/10" style={{ borderRadius: '8px' }}>
                       <Phone className="text-orange-700 flex-shrink-0" size={16} />
-                      <a href={`tel:${coordinator.phone}`} className="text-gray-800 font-mono font-bold hover:text-orange-700 transition-colors text-sm">
+                      <a href={tel:${coordinator.phone}} className="text-gray-800 font-mono font-bold hover:text-orange-700 transition-colors text-sm">
                         {coordinator.phone}
                       </a>
                     </div>
