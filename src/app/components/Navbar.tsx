@@ -91,13 +91,6 @@ export function Navbar() {
                   >
                     EVENTS
                   </button>
-                  <button
-                    onClick={() => scrollToSection('register')}
-                    className="block w-full text-left px-4 py-3 text-white hover:bg-yellow-400 hover:text-black transition-colors font-bold text-xs"
-                    style={{ fontFamily: '"Press Start 2P", cursive' }}
-                  >
-                    REGISTER
-                  </button>
                 </div>
               )}
             </div>
