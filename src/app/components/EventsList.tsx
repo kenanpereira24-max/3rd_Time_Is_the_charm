@@ -4,7 +4,8 @@ import {
   Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight 
 } from 'lucide-react';
 import { RetroHeading } from './ArcadeElements';
-import { FadeInUp, StaggerContainer, StaggerItem } from './ScrollAnimations';
+// REMOVED Stagger imports to prevent animation glitches on mobile
+import { FadeInUp } from './ScrollAnimations';
 
 // --- HELPER: Date Formatter ---
 function formatDate(dateStr: string) {
@@ -44,7 +45,7 @@ const events = [
     pocs: [
       { name: 'Keren', phone: '+91 8129498109' },
       { name: 'Joel', phone: '+91 7736278854' },
-      { name: 'Libena', phone: '+91 7695856564' }
+      { name: 'Lebina', phone: '+91 7695856564' }
     ]
   },
   // 2. Workshop I
@@ -279,7 +280,6 @@ const events = [
 const categories = ['All', 'Workshop', 'Technical', 'Non-Technical'];
 
 export function EventsList() {
-  // CHANGED: Default state is now 'All' (Pre-loaded)
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
@@ -341,10 +341,9 @@ export function EventsList() {
           </div>
         </FadeInUp>
 
-        {/* Events Grid */}
-        <StaggerContainer 
+        {/* Events Grid - REPLACED StaggerContainer with standard div */}
+        <div 
             key={selectedCategory} 
-            // FIXED: Added grid-cols-1 so it displays on mobile
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredEvents.map((event) => {
@@ -358,88 +357,88 @@ export function EventsList() {
             const bgColor = bgColors[event.color] || '#E5E7EB';
             
             return (
-              <StaggerItem key={event.id}>
-                <div 
-                  onClick={() => setSelectedEvent(event)}
-                  className="group h-full flex flex-col overflow-hidden hover:-translate-y-2 transition-all duration-300 border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white cursor-pointer hover:shadow-[12px_12px_0px_0px_rgba(255,255,0,1)] relative"
-                >
+              // REMOVED StaggerItem wrapper. The card itself is now the grid item.
+              <div 
+                key={event.id}
+                onClick={() => setSelectedEvent(event)}
+                className="group h-full flex flex-col overflow-hidden hover:-translate-y-2 transition-all duration-300 border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white cursor-pointer hover:shadow-[12px_12px_0px_0px_rgba(255,255,0,1)] relative"
+              >
+                
+                {/* "Click for Info" Badge */}
+                <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-[10px] px-2 py-1 rounded font-bold">
+                  CLICK INFO
+                </div>
+
+                {/* Card Header */}
+                <div className="p-6 text-black relative overflow-hidden" style={{ backgroundColor: bgColor }}>
+                  <div className="absolute inset-0 opacity-20" style={{
+                    backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)',
+                  }}></div>
                   
-                  {/* "Click for Info" Badge */}
-                  <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-[10px] px-2 py-1 rounded font-bold">
-                    CLICK INFO
-                  </div>
-
-                  {/* Card Header */}
-                  <div className="p-6 text-black relative overflow-hidden" style={{ backgroundColor: bgColor }}>
-                    <div className="absolute inset-0 opacity-20" style={{
-                      backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)',
-                    }}></div>
-                    
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block px-3 py-1 bg-black text-white text-xs font-bold rounded-md" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.6rem' }}>
-                          {formatDate(event.date)}
-                        </span>
-                        <div className="w-10 h-10 bg-black flex items-center justify-center rounded-lg shadow-sm">
-                          <Icon size={20} className="text-white" />
-                        </div>
-                      </div>
-
-                      <h3 className="text-lg font-bold mt-2" style={{ fontFamily: '"Press Start 2P", cursive', lineHeight: '1.4', fontSize: '0.75rem' }}>
-                        {event.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 bg-white flex flex-col flex-grow">
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full border-2 border-black">
-                        {event.category}
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="inline-block px-3 py-1 bg-black text-white text-xs font-bold rounded-md" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.6rem' }}>
+                        {formatDate(event.date)}
                       </span>
-                    </div>
-                    
-                    <p className="text-gray-700 leading-relaxed text-sm line-clamp-3 mb-4 flex-grow">
-                      {event.description}
-                    </p>
-
-                    {/* --- REGISTRATION BUTTON (IN CARD) --- */}
-                    <div className="mb-4">
-                        {/* UPDATED LOGIC: If registration_link is null, show nothing */}
-                        {!event.registration_link ? null : event.registration_link !== "#" ? (
-                          <a 
-                            href={event.registration_link} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            onClick={(e) => e.stopPropagation()} 
-                            className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors"
-                          >
-                            REGISTER NOW
-                          </a>
-                        ) : (
-                          <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">
-                            OPENING SOON
-                          </div>
-                        )}
-                    </div>
-                    
-                    {/* POC Names Only */}
-                    <div className="pt-4 border-t-2 border-gray-100 mt-auto">
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">POCs</p>
-                      <div className="flex flex-wrap gap-2">
-                        {event.pocs.map((p: any, i: number) => (
-                           <span key={i} className="text-xs font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded">
-                             {p.name}
-                           </span>
-                        ))}
+                      <div className="w-10 h-10 bg-black flex items-center justify-center rounded-lg shadow-sm">
+                        <Icon size={20} className="text-white" />
                       </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold mt-2" style={{ fontFamily: '"Press Start 2P", cursive', lineHeight: '1.4', fontSize: '0.75rem' }}>
+                      {event.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 bg-white flex flex-col flex-grow">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full border-2 border-black">
+                      {event.category}
+                    </span>
+                  </div>
+                  
+                  <p className="text-gray-700 leading-relaxed text-sm line-clamp-3 mb-4 flex-grow">
+                    {event.description}
+                  </p>
+
+                  {/* --- REGISTRATION BUTTON (IN CARD) --- */}
+                  <div className="mb-4">
+                      {/* UPDATED LOGIC: If registration_link is null, show nothing */}
+                      {!event.registration_link ? null : event.registration_link !== "#" ? (
+                        <a 
+                          href={event.registration_link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          onClick={(e) => e.stopPropagation()} 
+                          className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors"
+                        >
+                          REGISTER NOW
+                        </a>
+                      ) : (
+                        <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">
+                          OPENING SOON
+                        </div>
+                      )}
+                  </div>
+                  
+                  {/* POC Names Only */}
+                  <div className="pt-4 border-t-2 border-gray-100 mt-auto">
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">POCs</p>
+                    <div className="flex flex-wrap gap-2">
+                      {event.pocs.map((p: any, i: number) => (
+                          <span key={i} className="text-xs font-bold text-gray-800 bg-gray-100 px-2 py-1 rounded">
+                            {p.name}
+                          </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             );
           })}
-        </StaggerContainer>
+        </div>
 
         {/* --- SOCIAL MEDIA & ANNOUNCEMENTS --- */}
         <FadeInUp delay={0.4}>
