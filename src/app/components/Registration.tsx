@@ -69,7 +69,6 @@ export function Registration() {
             <div className="grid md:grid-cols-2 gap-6 text-gray-900 relative z-10">
               {/* Left Column */}
               <div className="space-y-3">
-                {/* MODIFIED ITEM HERE */}
                 <div className="flex items-start gap-2 bg-white p-3 hover:bg-yellow-50 transition-colors" style={{ clipPath: boxClipPath }}>
                   <PixelDot color="magenta" />
                   <p className="text-sm"><span className="font-bold">HACKATHON:</span> Compete for a total cash bounty of ₹10,000!</p>
@@ -92,7 +91,7 @@ export function Registration() {
               <div className="space-y-3">
                 <div className="flex items-start gap-2 bg-white p-3 hover:bg-yellow-50 transition-colors" style={{ clipPath: boxClipPath }}>
                   <PixelDot color="red" />
-                  <p className="text-sm"><span className="font-bold">Authentication Required:</span>Flash your ID Card at the entrance.</p>
+                  <p className="text-sm"><span className="font-bold">Authentication Required:</span> Flash your ID Card at the entrance.</p>
                 </div>
                 <div className="flex items-start gap-2 bg-white p-3 hover:bg-yellow-50 transition-colors" style={{ clipPath: boxClipPath }}>
                   <PixelDot color="green" />
@@ -151,7 +150,7 @@ export function Registration() {
                   <div className="mt-2">
                     <div className="flex items-center gap-2 bg-white p-2 border-2 border-black/10" style={{ borderRadius: '8px' }}>
                       <Phone className="text-orange-700 flex-shrink-0" size={16} />
-                      <a href={tel:${coordinator.phone}} className="text-gray-800 font-mono font-bold hover:text-orange-700 transition-colors text-sm">
+                      <a href={`tel:${coordinator.phone}`} className="text-gray-800 font-mono font-bold hover:text-orange-700 transition-colors text-sm">
                         {coordinator.phone}
                       </a>
                     </div>
