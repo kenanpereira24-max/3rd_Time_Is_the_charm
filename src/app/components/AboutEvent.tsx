@@ -72,8 +72,8 @@ export function AboutEvent() {
             {/* Main Description Box */}
             <div className="relative bg-white p-8 md:p-10 rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(37,99,235,1)]"> 
               <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-bold font-sans">
-                FOOBAR 10.0 is more than just an event—it's a movement! We bring together innovators, 
-                developers, designers, and entrepreneurs for three days of learning, building, and 
+                FOOBAR 10.0 is more than just an event—it's a movement! We bring together future innovators, 
+                developers, designers, and entrepreneurs for three weeks of learning, building, and 
                 celebrating technology. Whether you're a beginner or a seasoned pro, there's 
                 something here for everyone.
               </p>
