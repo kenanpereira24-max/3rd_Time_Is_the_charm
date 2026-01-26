@@ -37,11 +37,12 @@ const events = [
     day: 'Monday',
     date: '02-02-2026',
     icon: Coffee,
-    description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR.',
+    // Added timings to description
+    description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 1pm and 4pm to 5pm',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    // 👇 PASTE LINK HERE. If "#", it shows "Opening Soon".
-    registration_link: "#", 
+    // Set to null to remove button entirely
+    registration_link: null, 
     pocs: [
       { name: 'Keren', phone: '+91 8129498109' },
       { name: 'Joel', phone: '+91 7736278854' },
@@ -405,7 +406,8 @@ export function EventsList() {
 
                     {/* --- REGISTRATION BUTTON (IN CARD) --- */}
                     <div className="mb-4">
-                       {event.registration_link && event.registration_link !== "#" ? (
+                       {/* UPDATED LOGIC: If registration_link is null/falsy, show nothing. If "#", show Opening Soon. Else show Register. */}
+                       {!event.registration_link ? null : event.registration_link !== "#" ? (
                          <a 
                            href={event.registration_link} 
                            target="_blank" 
@@ -535,40 +537,43 @@ export function EventsList() {
 
                   <div className="prose max-w-none mb-8">
                     <h3 className="text-lg font-bold mb-2">Description</h3>
-                    <p className="text-gray-700 text-lg leading-relaxed">
+                    <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
                       {selectedEvent.description}
                     </p>
                   </div>
 
                   {/* --- MODAL VIEW: REGISTER BUTTON --- */}
-                  <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
-                      <div className="relative z-10">
-                         <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
-                            <Ticket size={24} /> REGISTER
-                         </h3>
-                         
-                         {selectedEvent.registration_link && selectedEvent.registration_link !== "#" ? (
-                           <>
-                             <p className="font-bold mb-4">Secure your spot now!</p>
-                             <a 
-                               href={selectedEvent.registration_link}
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
-                             >
-                               REGISTER NOW <ExternalLink size={16}/>
-                             </a>
-                           </>
-                         ) : (
-                           <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">
-                             REGISTRATIONS OPENING SOON
-                           </button>
-                         )}
-                      </div>
-                      <div className="absolute inset-0 opacity-10" style={{
-                          backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
-                      }}></div>
-                  </div>
+                  {/* UPDATED LOGIC: Only render the container if there is a link or it is '#' */}
+                  {selectedEvent.registration_link && (
+                    <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
+                        <div className="relative z-10">
+                           <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}>
+                              <Ticket size={24} /> REGISTER
+                           </h3>
+                           
+                           {selectedEvent.registration_link !== "#" ? (
+                             <>
+                               <p className="font-bold mb-4">Secure your spot now!</p>
+                               <a 
+                                 href={selectedEvent.registration_link}
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                                 className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg hover:scale-105 transition-transform hover:bg-gray-900 border-b-4 border-gray-700 active:border-b-0 active:translate-y-1"
+                               >
+                                 REGISTER NOW <ExternalLink size={16}/>
+                               </a>
+                             </>
+                           ) : (
+                             <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">
+                               REGISTRATIONS OPENING SOON
+                             </button>
+                           )}
+                        </div>
+                        <div className="absolute inset-0 opacity-10" style={{
+                            backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 10px, transparent 10px, transparent 20px)'
+                        }}></div>
+                    </div>
+                  )}
 
                   {/* POC SECTION */}
                   <div className="border-t-2 border-gray-100 pt-6">
