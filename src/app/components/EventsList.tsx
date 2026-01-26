@@ -44,7 +44,7 @@ const events = [
     pocs: [
       { name: 'Keren', phone: '+91 8129498109' },
       { name: 'Joel', phone: '+91 7736278854' },
-      { name: 'Lebina', phone: '+91 7695856564' }
+      { name: 'Libena', phone: '+91 7695856564' }
     ]
   },
   // 2. Workshop I
