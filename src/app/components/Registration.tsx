@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Sparkles, Phone } from 'lucide-react';
+import { ExternalLink, Sparkles, Phone, UserPlus } from 'lucide-react';
 import { RetroHeading, ArcadeButton, PixelDot } from './ArcadeElements';
 import { FadeInUp, StaggerContainer, StaggerItem } from './ScrollAnimations';
 import { PacManGhost, PowerStar, Coin, PixelHeart } from './ArcadeIcons';
@@ -46,9 +46,19 @@ export function Registration() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* --- UPDATED HEADING --- */}
+        <div className="text-center mb-8">
+            <FadeInUp>
+                <RetroHeading size="medium" className="text-white drop-shadow-[6px_6px_0_rgba(0,0,0,1)]">
+                    IMPORTANT DETAILS
+                </RetroHeading>
+            </FadeInUp>
+        </div>
+
         {/* Main Info Box */}
-        <FadeInUp delay={0.5}>
-          <div className="bg-cyan-300 p-8 mt-12 relative border-4 border-black" style={{
+        <FadeInUp delay={0.2}>
+          <div className="bg-cyan-300 p-8 relative border-4 border-black" style={{
             boxShadow: '12px 12px 0px rgba(0,0,0,1)',
             clipPath: `polygon(
               0 12px, 8px 12px, 8px 8px, 12px 8px, 12px 0,
@@ -112,7 +122,7 @@ export function Registration() {
 
         {/* Contact CTA Section */}
         <div className="mt-12">
-          <FadeInUp delay={0.6}>
+          <FadeInUp delay={0.4}>
             <p className="text-xl text-gray-900 mb-6 text-center font-bold bg-yellow-400 p-4 border-4 border-black" style={{ 
               fontFamily: '"Press Start 2P", cursive', 
               lineHeight: '1.8', 
@@ -121,7 +131,7 @@ export function Registration() {
               clipPath: `polygon(
                 0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
                 calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
-                100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+                100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 12px) calc(100% - 8px), calc(100% - 12px) 100%,
                 8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
               )`
             }}>
