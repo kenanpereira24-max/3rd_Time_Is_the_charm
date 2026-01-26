@@ -279,20 +279,13 @@ const events = [
 const categories = ['All', 'Workshop', 'Technical', 'Non-Technical'];
 
 export function EventsList() {
-  // CHANGED: Initial state is now null (instead of 'All')
-  // This prevents events from loading automatically on scroll/mount.
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  // CHANGED: Default state is now 'All' (Pre-loaded)
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
-  // UPDATED FILTER LOGIC:
-  // If no category is selected (null), return empty array.
-  // If 'All', show everything.
-  // Otherwise, filter by category.
   const filteredEvents = selectedCategory === 'All' 
     ? events 
-    : selectedCategory 
-      ? events.filter(event => event.category === selectedCategory)
-      : [];
+    : events.filter(event => event.category === selectedCategory);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -350,7 +343,7 @@ export function EventsList() {
 
         {/* Events Grid */}
         <StaggerContainer 
-            key={selectedCategory || 'empty'} 
+            key={selectedCategory} 
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredEvents.map((event) => {
@@ -451,8 +444,8 @@ export function EventsList() {
         <FadeInUp delay={0.4}>
           <div className="mt-16 text-center space-y-8">
             
-            {/* NOTE BANNER */}
-            <div className="bg-pink-400 py-2 px-4 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-3xl mx-auto">
+            {/* NOTE BANNER - SLIM VERSION */}
+            <div className="bg-pink-400 py-2 px-4 rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-2xl mx-auto">
               <p className="text-xs md:text-sm font-bold text-black flex items-center justify-center gap-3">
                 <span className="bg-black text-white px-2 py-1 rounded text-[10px]" style={{ fontFamily: '"Press Start 2P", cursive' }}>NOTE:</span>
                  Follow our Instagram page for updates.
