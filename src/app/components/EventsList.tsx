@@ -229,11 +229,11 @@ const events = [
   // 13. Workshop by Struxnet
   {
     id: 'w3',
-    title: 'Workshop by Struxnet',
+    title: 'Docker 101',
     day: 'Thursday',
     date: '19-02-2026',
     icon: Globe,
-    description: '', 
+    description: 'Workshop by Pixelstack club', 
     color: 'from-blue-500 to-cyan-500',
     category: 'Workshop',
     registration_link: "#", 
