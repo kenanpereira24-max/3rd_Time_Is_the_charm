@@ -207,7 +207,7 @@ const events = [
     registration_link: "#", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
-      { name: 'Tharun J', phone: '+91 7539932035' }
+      { name: 'Tharun J', phone: '+91 8904739898' }
     ]
   },
   // 12. Ace Clutch
