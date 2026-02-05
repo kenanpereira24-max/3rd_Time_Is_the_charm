@@ -109,7 +109,7 @@ export function EventHero() {
                 <Calendar size={28} />
                 <div className="text-left">
                   <div className="text-xs font-bold" style={{ fontFamily: '"Press Start 2P", cursive' }}>DATE</div>
-                  <div className="font-bold text-sm">Jan 30 Onwards</div>
+                  <div className="font-bold text-sm">FEB 9 Onwards</div>
                 </div>
               </div>
             </FadeInUp>
