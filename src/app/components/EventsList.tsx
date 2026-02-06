@@ -244,7 +244,7 @@ const events = [
   // 14. Freeze Quest
   {
     id: 'nt3',
-    title: 'Freeze Quest',
+    title: 'Dice and Disaster',
     day: 'Thursday',
     date: '26-02-2026',
     icon: Users,
