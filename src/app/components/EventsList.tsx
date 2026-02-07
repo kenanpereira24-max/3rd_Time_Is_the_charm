@@ -424,21 +424,43 @@ export function EventsList() {
                   </div>
                 </div>
                 <div className="p-8 bg-white">
-                  <div className="flex justify-center mb-8">
-                    <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[200px] justify-center shadow-sm">
+                  
+                  {/* SEPARATE BOXES FOR DATE, TIME, AND VENUE */}
+                  <div className="flex flex-wrap justify-center gap-4 mb-8">
+                    
+                    {/* Date Box */}
+                    <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
                       <Calendar className="text-purple-600" size={24} />
                       <div>
-                        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Date & Venue</p>
+                        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Date</p>
                         <p className="font-bold text-lg text-gray-800">{formatDate(selectedEvent.date)}</p>
-                        {selectedEvent.venue && (
-                             <p className="text-sm font-bold text-gray-600 mt-1 flex items-center gap-1"><MapPin size={14}/> {selectedEvent.venue}</p>
-                        )}
-                        {selectedEvent.time && (
-                             <p className="text-sm font-bold text-blue-600 mt-1 flex items-center gap-1"><Clock size={14}/> {selectedEvent.time}</p>
-                        )}
                       </div>
                     </div>
+
+                    {/* Time Box (Only if time exists) */}
+                    {selectedEvent.time && (
+                      <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
+                        <Clock className="text-blue-600" size={24} />
+                        <div>
+                          <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Time</p>
+                          <p className="font-bold text-lg text-gray-800">{selectedEvent.time}</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Venue Box (Only if venue exists) */}
+                    {selectedEvent.venue && (
+                      <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
+                        <MapPin className="text-red-600" size={24} />
+                        <div>
+                          <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Venue</p>
+                          <p className="font-bold text-lg text-gray-800">{selectedEvent.venue}</p>
+                        </div>
+                      </div>
+                    )}
+
                   </div>
+
                   <div className="prose max-w-none mb-8">
                     <h3 className="text-lg font-bold mb-2">Description</h3>
                     <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{selectedEvent.description}</p>
