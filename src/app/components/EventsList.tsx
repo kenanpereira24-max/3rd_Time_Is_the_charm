@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Code, Brain, Gamepad2, Globe, Mic, Coffee, Video, Users, Puzzle, 
-  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight 
+  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight, MapPin 
 } from 'lucide-react';
 import { RetroHeading } from './ArcadeElements';
 import { FadeInUp } from './ScrollAnimations';
@@ -33,6 +33,7 @@ const events = [
     title: 'Interaction Event',
     day: 'Monday',
     date: '09-02-2026',
+    venue: 'Main Auditorium',
     icon: Coffee,
     description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 1pm and 4pm to 5pm',
     color: 'from-pink-500 to-rose-500',
@@ -49,6 +50,7 @@ const events = [
     title: 'Workshop I',
     day: 'Saturday',
     date: '14-02-2026',
+    venue: 'Lab 1',
     icon: Cpu,
     description: '', 
     color: 'from-blue-500 to-cyan-500',
@@ -64,11 +66,12 @@ const events = [
     title: 'Pitch and Perish',
     day: 'Wednesday',
     date: '11-02-2026',
+    venue: null,
     icon: Mic,
     description: 'Entrepreneurship-focused competition designed to test participants’ creativity, branding sense, and business strategy. Round 1: Logo Redesign Challenge. Round 2: Pitching.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    registration_link: "", 
+    registration_link: "#", 
     pocs: [
       { name: 'Prachi', phone: '+91 7982126893' },
       { name: 'Paul', phone: '+91 9606867886' }
@@ -79,6 +82,7 @@ const events = [
     title: 'Trust Issues',
     day: 'Tuesday',
     date: '24-02-2026', 
+    venue: null,
     icon: Lock,
     description: '', 
     color: 'from-green-500 to-emerald-600',
@@ -94,6 +98,7 @@ const events = [
     title: 'Hackathon',
     day: 'Wednesday',
     date: '18-02-2026',
+    venue: 'Library Block',
     icon: Code,
     description: 'Theme: Innovation for a Better Tomorrow. Day 1 (Prelims), Day 2 (Remote build), Day 3 (Finals). Solve real-world problem statements under 10 thematic areas.',
     color: 'from-green-500 to-emerald-600',
@@ -110,6 +115,7 @@ const events = [
     title: 'Escape Room',
     day: 'Monday',
     date: '23-02-2026',
+    venue: null,
     icon: Puzzle,
     description: 'Find clues in order to escape the room. Theme: Stranger Things.',
     color: 'from-pink-500 to-rose-500',
@@ -125,6 +131,7 @@ const events = [
     title: 'Browser Blitz',
     day: 'Friday',
     date: '27-02-2026',
+    venue: null,
     icon: Globe,
     description: 'Round 1: Debugging Hunt (Fix broken webpages). Round 2: Production Rescue (Fix broken React app, build errors, UI issues).',
     color: 'from-green-500 to-emerald-600',
@@ -140,6 +147,7 @@ const events = [
     title: 'HackStorm',
     day: 'Friday',
     date: '13-02-2026',
+    venue: null,
     icon: Code,
     description: 'Round 1: CodeSense (Rapid-fire debugging/logic). Round 2: PairStorm (Collaborative coding). Round 3: HackStorm (Algorithmic problems).',
     color: 'from-green-500 to-emerald-600',
@@ -155,6 +163,7 @@ const events = [
     title: 'Code Relay: The Last Commit',
     day: 'Thursday',
     date: '12-02-2026',
+    venue: null,
     icon: Terminal,
     description: 'Multi-round software engineering challenge. Debug, stabilize, extend, and harden a broken Dockerized application simulating real-world open-source workflows.',
     color: 'from-green-500 to-emerald-600',
@@ -171,6 +180,7 @@ const events = [
     title: 'Workshop III',
     day: 'Saturday',
     date: '14-02-2026',
+    venue: null,
     icon: Cpu,
     description: '', 
     color: 'from-blue-500 to-cyan-500',
@@ -186,11 +196,12 @@ const events = [
     title: 'Beat the Bot',
     day: 'Tuesday',
     date: '10-02-2026',
+    venue: null,
     icon: Brain,
     description: 'Technical & Creative Challenge. Round 1: Quick Quiz (Multi-Domain). Round 2: Beating the AI Storyteller (Identify AI hallucinations/inconsistencies).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "", 
+    registration_link: "#", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
       { name: 'Tharun J', phone: '+91 8904739898' }
@@ -201,6 +212,7 @@ const events = [
     title: 'Ace Clutch',
     day: 'Monday',
     date: '16-02-2026',
+    venue: null,
     icon: Gamepad2,
     description: 'Exhilarating multi-stage digital gaming event. Teams compete across multiple games to climb the dynamic leaderboard.',
     color: 'from-pink-500 to-rose-500',
@@ -216,6 +228,7 @@ const events = [
     title: 'Docker 101',
     day: 'Friday',
     date: '20-02-2026',
+    venue: null,
     icon: Globe,
     description: 'Workshop by Pixelstack club', 
     color: 'from-blue-500 to-cyan-500',
@@ -231,6 +244,7 @@ const events = [
     title: 'Dice and Disaster',
     day: 'Thursday',
     date: '26-02-2026',
+    venue: null,
     icon: Users,
     description: 'A giant board path created on the ground. Teams move via dice rolls facing Challenges, Dares, Freeze, Lava, and Riddles.',
     color: 'from-pink-500 to-rose-500',
@@ -246,6 +260,7 @@ const events = [
     title: 'Flick Fiesta',
     day: 'Thursday',
     date: '26-02-2026',
+    venue: null,
     icon: Video,
     description: 'Short film-making competition. Teams create a compelling short movie based on a theme. Evaluated on storytelling and technical execution.',
     color: 'from-pink-500 to-rose-500',
@@ -338,7 +353,15 @@ export function EventsList() {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)' }}></div>
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-2">
-                      <span className="inline-block px-3 py-1 bg-black text-white text-xs font-bold rounded-md" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.6rem' }}>{formatDate(event.date)}</span>
+                      <div className="flex flex-col items-start">
+                        <span className="inline-block px-3 py-1 bg-black text-white text-xs font-bold rounded-md" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '0.6rem' }}>{formatDate(event.date)}</span>
+                        {event.venue && (
+                            <div className="mt-2 inline-flex items-center gap-1 px-2 py-1 bg-white/90 rounded border border-black shadow-sm">
+                                <MapPin size={10} className="text-red-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-tight leading-none">{event.venue}</span>
+                            </div>
+                        )}
+                      </div>
                       <div className="w-10 h-10 bg-black flex items-center justify-center rounded-lg shadow-sm"><Icon size={20} className="text-white" /></div>
                     </div>
                     <h3 className="text-lg font-bold mt-2" style={{ fontFamily: '"Press Start 2P", cursive', lineHeight: '1.4', fontSize: '0.75rem' }}>{event.title}</h3>
@@ -384,8 +407,11 @@ export function EventsList() {
                     <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[200px] justify-center shadow-sm">
                       <Calendar className="text-purple-600" size={24} />
                       <div>
-                        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Date</p>
+                        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Date & Venue</p>
                         <p className="font-bold text-lg text-gray-800">{formatDate(selectedEvent.date)}</p>
+                        {selectedEvent.venue && (
+                             <p className="text-sm font-bold text-gray-600 mt-1 flex items-center gap-1"><MapPin size={14}/> {selectedEvent.venue}</p>
+                        )}
                       </div>
                     </div>
                   </div>
