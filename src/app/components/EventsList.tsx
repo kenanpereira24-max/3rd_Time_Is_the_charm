@@ -6,7 +6,6 @@ import {
 import { RetroHeading } from './ArcadeElements';
 import { FadeInUp } from './ScrollAnimations';
 
-// --- HELPER: Date Formatter ---
 function formatDate(dateStr: string) {
   if (!dateStr) return 'TBA';
   const cleanDate = dateStr.includes('/') ? dateStr.split('/')[0] + '-' + dateStr.split('-')[1] + '-' + dateStr.split('-')[2] : dateStr;
@@ -28,9 +27,7 @@ function formatDate(dateStr: string) {
   return `${day}${suffix} ${monthNames[month]}`;
 }
 
-// --- DATA ---
 const events = [
-  // 1. Interaction Event
   {
     id: 'nt6',
     title: 'Interaction Event',
@@ -47,7 +44,6 @@ const events = [
       { name: 'Libena', phone: '+91 7695856564' }
     ]
   },
-  // 2. Workshop I
   {
     id: 'w1',
     title: 'Workshop I',
@@ -63,7 +59,6 @@ const events = [
       { name: 'Naman', phone: '+91 8127390863' }
     ]
   },
-  // 3. Pitch and Perish
   {
     id: 'nt1',
     title: 'Pitch and Perish',
@@ -73,13 +68,12 @@ const events = [
     description: 'Entrepreneurship-focused competition designed to test participants’ creativity, branding sense, and business strategy. Round 1: Logo Redesign Challenge. Round 2: Pitching.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    registration_link: "#", 
+    registration_link: "https://forms.gle/nFdDZ5fxkPrcoKJz6", 
     pocs: [
       { name: 'Prachi', phone: '+91 7982126893' },
       { name: 'Paul', phone: '+91 9606867886' }
     ]
   },
-  // 4. Trust Issues
   {
     id: 't3',
     title: 'Trust Issues',
@@ -95,7 +89,6 @@ const events = [
       { name: 'Canice', phone: '+91 7057569482' }
     ]
   },
-  // 5. Hackathon
   {
     id: 't6',
     title: 'Hackathon',
@@ -112,7 +105,6 @@ const events = [
       { name: 'Tharun', phone: '+91 7539932035' }
     ]
   },
-  // 6. Escape Room
   {
     id: 'nt2',
     title: 'Escape Room',
@@ -128,7 +120,6 @@ const events = [
       { name: 'Keren', phone: '+91 8129498109' }
     ]
   },
-  // 7. Browser Blitz
   {
     id: 't4',
     title: 'Browser Blitz',
@@ -144,7 +135,6 @@ const events = [
       { name: 'Arunima', phone: '+91 8794788693' }
     ]
   },
-  // 8. HackStorm
   {
     id: 't5',
     title: 'HackStorm',
@@ -160,7 +150,6 @@ const events = [
       { name: 'Arnav', phone: '+91 9144914517' }
     ]
   },
-  // 9. Code Relay
   {
     id: 't1',
     title: 'Code Relay: The Last Commit',
@@ -177,7 +166,6 @@ const events = [
       { name: 'Neha', phone: '+91 9390336410' }
     ]
   },
-  // 10. Workshop III
   {
     id: 'w2',
     title: 'Workshop III',
@@ -193,7 +181,6 @@ const events = [
       { name: 'Naman', phone: '+91 8127390863' }
     ]
   },
-  // 11. Beat the Bot
   {
     id: 't2',
     title: 'Beat the Bot',
@@ -203,13 +190,12 @@ const events = [
     description: 'Technical & Creative Challenge. Round 1: Quick Quiz (Multi-Domain). Round 2: Beating the AI Storyteller (Identify AI hallucinations/inconsistencies).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLSc_znPcsZ3LuUUdS98Nq72_eKx5085uFpQEaEA0UwFVKWXMrQ/viewform", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
       { name: 'Tharun J', phone: '+91 8904739898' }
     ]
   },
-  // 12. Ace Clutch
   {
     id: 'nt5',
     title: 'Ace Clutch',
@@ -225,7 +211,6 @@ const events = [
       { name: 'Aayush', phone: '+91 8588802698' }
     ]
   },
-  // 13. Workshop by Struxnet
   {
     id: 'w3',
     title: 'Docker 101',
@@ -241,7 +226,6 @@ const events = [
       { name: 'Arnav', phone: '+91 9144914517' }
     ]
   },
-  // 14. Freeze Quest
   {
     id: 'nt3',
     title: 'Dice and Disaster',
@@ -257,7 +241,6 @@ const events = [
       { name: 'Canice', phone: '+91 7057569482' }
     ]
   },
-  // 15. Flick Fiesta
   {
     id: 'nt4',
     title: 'Flick Fiesta',
@@ -365,7 +348,7 @@ export function EventsList() {
                   <div className="mb-4"><span className="inline-block px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full border-2 border-black">{event.category}</span></div>
                   <p className="text-gray-700 leading-relaxed text-sm line-clamp-3 mb-4 flex-grow">{event.description}</p>
                   <div className="mb-4">
-                      {!event.registration_link ? null : event.registration_link !== "#" ? (
+                      {event.registration_link && event.registration_link !== "#" ? (
                         <a href={event.registration_link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="inline-block w-full text-center py-2 bg-black text-white text-xs font-bold rounded hover:bg-gray-800 transition-colors">REGISTER NOW</a>
                       ) : (
                         <div className="w-full text-center py-2 bg-gray-100 text-gray-400 text-xs font-bold rounded cursor-not-allowed border-2 border-dashed border-gray-300">OPENING SOON</div>
@@ -410,18 +393,16 @@ export function EventsList() {
                     <h3 className="text-lg font-bold mb-2">Description</h3>
                     <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{selectedEvent.description}</p>
                   </div>
-                  {selectedEvent.registration_link && (
-                    <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
-                      <div className="relative z-10">
-                          <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}><Ticket size={24} /> REGISTER</h3>
-                          {selectedEvent.registration_link !== "#" ? (
-                            <><p className="font-bold mb-4">Secure your spot now!</p><a href={selectedEvent.registration_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg border-b-4 border-gray-700 active:border-b-0 active:translate-y-1">REGISTER NOW <ExternalLink size={16}/></a></>
-                          ) : (
-                            <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">REGISTRATIONS OPENING SOON</button>
-                          )}
-                      </div>
+                  <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
+                    <div className="relative z-10">
+                        <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}><Ticket size={24} /> REGISTER</h3>
+                        {selectedEvent.registration_link && selectedEvent.registration_link !== "#" ? (
+                          <><p className="font-bold mb-4">Secure your spot now!</p><a href={selectedEvent.registration_link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-lg border-b-4 border-gray-700 active:border-b-0 active:translate-y-1">REGISTER NOW <ExternalLink size={16}/></a></>
+                        ) : (
+                          <button disabled className="px-6 py-3 bg-black text-white font-bold rounded-lg opacity-80 cursor-not-allowed">REGISTRATIONS OPENING SOON</button>
+                        )}
                     </div>
-                  )}
+                  </div>
                   <div className="border-t-2 border-gray-100 pt-6">
                     <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Event Coordinators</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
