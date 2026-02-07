@@ -68,7 +68,7 @@ const events = [
     description: 'Entrepreneurship-focused competition designed to test participants’ creativity, branding sense, and business strategy. Round 1: Logo Redesign Challenge. Round 2: Pitching.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    registration_link: "https://forms.gle/nFdDZ5fxkPrcoKJz6", 
+    registration_link: "", 
     pocs: [
       { name: 'Prachi', phone: '+91 7982126893' },
       { name: 'Paul', phone: '+91 9606867886' }
@@ -190,7 +190,7 @@ const events = [
     description: 'Technical & Creative Challenge. Round 1: Quick Quiz (Multi-Domain). Round 2: Beating the AI Storyteller (Identify AI hallucinations/inconsistencies).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLSc_znPcsZ3LuUUdS98Nq72_eKx5085uFpQEaEA0UwFVKWXMrQ/viewform", 
+    registration_link: "", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
       { name: 'Tharun J', phone: '+91 8904739898' }
