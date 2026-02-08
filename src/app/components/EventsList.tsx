@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Code, Brain, Gamepad2, Globe, Mic, Coffee, Video, Users, Puzzle, 
-  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight, MapPin, Clock 
+  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight, MapPin, Clock, Trophy 
 } from 'lucide-react';
 import { RetroHeading } from './ArcadeElements';
 import { FadeInUp } from './ScrollAnimations';
@@ -35,6 +35,9 @@ const events = [
     date: '09-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Coffee,
     description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 1pm and 4pm to 5pm',
     color: 'from-pink-500 to-rose-500',
@@ -53,6 +56,9 @@ const events = [
     date: '14-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Cpu,
     description: '', 
     color: 'from-blue-500 to-cyan-500',
@@ -68,13 +74,16 @@ const events = [
     title: 'Pitch and Perish',
     day: 'Wednesday',
     date: '11-02-2026',
-    time: '10 AM Onwards',
-    venue: ' 2nd Block, 3rd Floor, Seminar Hall ',
+    time: '10 AM onwards',
+    venue: '2nd Block, 3rd Floor, Seminar Hall',
+    team_size: '3-4 Members',
+    prize1: '2500',
+    prize2: '1500',
     icon: Mic,
     description: 'Entrepreneurship-focused competition designed to test participants’ creativity, branding sense, and business strategy. Round 1: Logo Redesign Challenge. Round 2: Pitching.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    registration_link: "#", 
+    registration_link: "https://forms.gle/nFdDZ5fxkPrcoKJz6", 
     pocs: [
       { name: 'Prachi', phone: '+91 7982126893' },
       { name: 'Paul', phone: '+91 9606867886' }
@@ -87,6 +96,9 @@ const events = [
     date: '24-02-2026', 
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Lock,
     description: '', 
     color: 'from-green-500 to-emerald-600',
@@ -104,6 +116,9 @@ const events = [
     date: '18-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Code,
     description: 'Theme: Innovation for a Better Tomorrow. Day 1 (Prelims), Day 2 (Remote build), Day 3 (Finals). Solve real-world problem statements under 10 thematic areas.',
     color: 'from-green-500 to-emerald-600',
@@ -122,6 +137,9 @@ const events = [
     date: '23-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Puzzle,
     description: 'Find clues in order to escape the room. Theme: Stranger Things.',
     color: 'from-pink-500 to-rose-500',
@@ -139,6 +157,9 @@ const events = [
     date: '27-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Globe,
     description: 'Round 1: Debugging Hunt (Fix broken webpages). Round 2: Production Rescue (Fix broken React app, build errors, UI issues).',
     color: 'from-green-500 to-emerald-600',
@@ -155,7 +176,10 @@ const events = [
     day: 'Friday',
     date: '13-02-2026',
     time: null,
-    venue: null,
+    venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
+    team_size: null,
+    prize1: '3000',
+    prize2: '2000',
     icon: Code,
     description: 'Round 1: CodeSense (Rapid-fire debugging/logic). Round 2: PairStorm (Collaborative coding). Round 3: HackStorm (Algorithmic problems).',
     color: 'from-green-500 to-emerald-600',
@@ -172,7 +196,10 @@ const events = [
     day: 'Thursday',
     date: '12-02-2026',
     time: null,
-    venue: null,
+    venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
+    team_size: null,
+    prize1: '3000',
+    prize2: '2000',
     icon: Terminal,
     description: 'Multi-round software engineering challenge. Debug, stabilize, extend, and harden a broken Dockerized application simulating real-world open-source workflows.',
     color: 'from-green-500 to-emerald-600',
@@ -191,6 +218,9 @@ const events = [
     date: '14-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Cpu,
     description: '', 
     color: 'from-blue-500 to-cyan-500',
@@ -206,13 +236,16 @@ const events = [
     title: 'Beat the Bot',
     day: 'Tuesday',
     date: '10-02-2026',
-    time: '10 AM Onwards ',
-    venue: '2nd Block, 4th Floor, 266 & 268',
+    time: '10 AM onwards',
+      venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
+    team_size: '3-4 Members',
+    prize1: '3000',
+    prize2: '2000',
     icon: Brain,
     description: 'Technical & Creative Challenge. Round 1: Quick Quiz (Multi-Domain). Round 2: Beating the AI Storyteller (Identify AI hallucinations/inconsistencies).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLSc_znPcsZ3LuUUdS98Nq72_eKx5085uFpQEaEA0UwFVKWXMrQ/viewform", 
     pocs: [
       { name: 'Rupal', phone: '+91 9606998764' },
       { name: 'Tharun J', phone: '+91 8904739898' }
@@ -225,6 +258,9 @@ const events = [
     date: '16-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Gamepad2,
     description: 'Exhilarating multi-stage digital gaming event. Teams compete across multiple games to climb the dynamic leaderboard.',
     color: 'from-pink-500 to-rose-500',
@@ -242,6 +278,9 @@ const events = [
     date: '20-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Globe,
     description: 'Workshop by Pixelstack club', 
     color: 'from-blue-500 to-cyan-500',
@@ -259,6 +298,9 @@ const events = [
     date: '26-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Users,
     description: 'A giant board path created on the ground. Teams move via dice rolls facing Challenges, Dares, Freeze, Lava, and Riddles.',
     color: 'from-pink-500 to-rose-500',
@@ -276,6 +318,9 @@ const events = [
     date: '26-02-2026',
     time: null,
     venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
     icon: Video,
     description: 'Short film-making competition. Teams create a compelling short movie based on a theme. Evaluated on storytelling and technical execution.',
     color: 'from-pink-500 to-rose-500',
@@ -425,7 +470,7 @@ export function EventsList() {
                 </div>
                 <div className="p-8 bg-white">
                   
-                  {/* SEPARATE BOXES FOR DATE, TIME, AND VENUE */}
+                  {/* METADATA BOXES: DATE, TIME, VENUE, TEAM SIZE */}
                   <div className="flex flex-wrap justify-center gap-4 mb-8">
                     
                     {/* Date Box */}
@@ -458,6 +503,17 @@ export function EventsList() {
                         </div>
                       </div>
                     )}
+                    
+                     {/* Team Size Box (Only if team_size exists) */}
+                    {selectedEvent.team_size && (
+                      <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
+                        <Users className="text-orange-500" size={24} />
+                        <div>
+                          <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Team Size</p>
+                          <p className="font-bold text-lg text-gray-800">{selectedEvent.team_size}</p>
+                        </div>
+                      </div>
+                    )}
 
                   </div>
 
@@ -465,6 +521,28 @@ export function EventsList() {
                     <h3 className="text-lg font-bold mb-2">Description</h3>
                     <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{selectedEvent.description}</p>
                   </div>
+                  
+                  {/* PRIZE POOL SECTION */}
+                  {(selectedEvent.prize1 || selectedEvent.prize2) && (
+                      <div className="mb-8">
+                         <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Trophy className="text-yellow-500" /> PRIZE POOL</h3>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {selectedEvent.prize1 && (
+                                <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl flex items-center gap-4">
+                                     <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center font-bold text-black border-2 border-black">1st</div>
+                                     <p className="font-bold text-lg text-gray-800">{selectedEvent.prize1}</p>
+                                </div>
+                            )}
+                            {selectedEvent.prize2 && (
+                                <div className="p-4 bg-gray-50 border-2 border-gray-200 rounded-xl flex items-center gap-4">
+                                     <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-black border-2 border-black">2nd</div>
+                                     <p className="font-bold text-lg text-gray-800">{selectedEvent.prize2}</p>
+                                </div>
+                            )}
+                         </div>
+                      </div>
+                  )}
+
                   <div className="bg-yellow-400 p-6 rounded-2xl border-4 border-black text-center relative overflow-hidden mb-8">
                     <div className="relative z-10">
                         <h3 className="text-xl font-black mb-2 flex items-center justify-center gap-2" style={{ fontFamily: '"Press Start 2P", cursive', fontSize: '1rem' }}><Ticket size={24} /> REGISTER</h3>
