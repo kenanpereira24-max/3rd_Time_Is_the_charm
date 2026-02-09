@@ -39,7 +39,7 @@ const events = [
     prize1: null,
     prize2: null,
     icon: Coffee,
-    description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 1pm and 4pm to 5pm',
+    description: 'A fun interaction event to kick things off! Meet the teams, break the ice, and get ready for FOOBAR. Timings: 12pm to 2pm and 4pm to 5pm',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
     registration_link: null, 
