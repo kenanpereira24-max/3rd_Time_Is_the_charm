@@ -184,7 +184,7 @@ const events = [
     description: 'Round 1: CodeSense (Rapid-fire debugging/logic). Round 2: PairStorm (Collaborative coding). Round 3: HackStorm (Algorithmic problems).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLSdDWbichdVbfTa5f0axgqQma28Bu_umaUja2uM6-KeK3vFivA/viewform", 
     pocs: [
       { name: 'Parthiv', phone: '+91 9862811449' },
       { name: 'Arnav', phone: '+91 9144914517' }
@@ -204,7 +204,7 @@ const events = [
     description: 'Multi-round software engineering challenge. Debug, stabilize, extend, and harden a broken Dockerized application simulating real-world open-source workflows.',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLSeIeAjAQeDZkaTJfLlawLYa9v9aMY2Vy3sD6cIqibCioHsubA/viewform", 
     pocs: [
       { name: 'Hans', phone: '+91 8861566069' },
       { name: 'Samuel', phone: '+91 7337703388' },
