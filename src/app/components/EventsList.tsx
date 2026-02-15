@@ -9,7 +9,7 @@ import { FadeInUp } from './ScrollAnimations';
 function formatDate(dateStr: string) {
   if (!dateStr) return 'TBA';
   const cleanDate = dateStr.includes('/') ? dateStr.split('/')[0] + '-' + dateStr.split('-')[1] + '-' + dateStr.split('-')[2] : dateStr;
-  
+   
   const [dayPart, monthPart] = cleanDate.split('-');
   const day = parseInt(dayPart, 10);
   const month = parseInt(monthPart, 10);
@@ -113,7 +113,7 @@ const events = [
     id: 't6',
     title: 'Hackathon',
     day: 'Wednesday',
-    date: '18-02-2026',
+    date: '19-02-2026',
     time: null,
     venue: null,
     team_size: null,
@@ -193,8 +193,8 @@ const events = [
   {
     id: 't1',
     title: 'Code Relay: The Last Commit',
-    day: 'Thursday',
-    date: '12-02-2026',
+    day: 'Monday',
+    date: '16-02-2026',
     time: null,
     venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
     team_size: null,
@@ -237,7 +237,7 @@ const events = [
     day: 'Tuesday',
     date: '10-02-2026',
     time: '10 AM onwards',
-      venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
+    venue: '2nd Block, 4th Floor, Room nos: 266 & 268',
     team_size: '3-4 Members',
     prize1: '3000',
     prize2: '2000',
@@ -254,8 +254,8 @@ const events = [
   {
     id: 'nt5',
     title: 'Ace Clutch',
-    day: 'Monday',
-    date: '16-02-2026',
+    day: 'Tuesday',
+    date: '17-02-2026',
     time: null,
     venue: null,
     team_size: null,
@@ -401,7 +401,7 @@ export function EventsList() {
               'from-green-500 to-emerald-600': '#86EFAC',
             };
             const bgColor = bgColors[event.color] || '#E5E7EB';
-            
+             
             return (
               <div 
                 key={event.id}
@@ -469,10 +469,10 @@ export function EventsList() {
                   </div>
                 </div>
                 <div className="p-8 bg-white">
-                  
+                   
                   {/* METADATA BOXES: DATE, TIME, VENUE, TEAM SIZE */}
                   <div className="flex flex-wrap justify-center gap-4 mb-8">
-                    
+                     
                     {/* Date Box */}
                     <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
                       <Calendar className="text-purple-600" size={24} />
@@ -503,8 +503,8 @@ export function EventsList() {
                         </div>
                       </div>
                     )}
-                    
-                     {/* Team Size Box (Only if team_size exists) */}
+                     
+                      {/* Team Size Box (Only if team_size exists) */}
                     {selectedEvent.team_size && (
                       <div className="inline-flex items-center gap-4 p-4 bg-gray-50 rounded-xl border-2 border-gray-200 min-w-[150px] justify-center shadow-sm">
                         <Users className="text-orange-500" size={24} />
@@ -521,12 +521,12 @@ export function EventsList() {
                     <h3 className="text-lg font-bold mb-2">Description</h3>
                     <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{selectedEvent.description}</p>
                   </div>
-                  
+                   
                   {/* PRIZE POOL SECTION */}
                   {(selectedEvent.prize1 || selectedEvent.prize2) && (
                       <div className="mb-8">
-                         <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Trophy className="text-yellow-500" /> PRIZE POOL</h3>
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Trophy className="text-yellow-500" /> PRIZE POOL</h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {selectedEvent.prize1 && (
                                 <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-xl flex items-center gap-4">
                                      <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center font-bold text-black border-2 border-black">1st</div>
@@ -539,7 +539,7 @@ export function EventsList() {
                                      <p className="font-bold text-lg text-gray-800">{selectedEvent.prize2}</p>
                                 </div>
                             )}
-                         </div>
+                          </div>
                       </div>
                   )}
 
