@@ -69,26 +69,7 @@ const events = [
       { name: 'Libena', phone: '+91 7695856564' }
     ]
   },
-  {
-    id: 'w1',
-    title: 'Workshop I',
-    day: 'Saturday',
-    date: '14-02-2026',
-    time: null,
-    venue: null,
-    team_size: null,
-    prize1: null,
-    prize2: null,
-    icon: Cpu,
-    description: '', 
-    color: 'from-blue-500 to-cyan-500',
-    category: 'Workshop',
-    registration_link: "#", 
-    pocs: [
-      { name: 'Joel', phone: '+91 7736278854' },
-      { name: 'Naman', phone: '+91 8127390863' }
-    ]
-  },
+
   {
     id: 'nt1',
     title: 'Pitch and Perish',
@@ -231,26 +212,7 @@ const events = [
       { name: 'Neha', phone: '+91 9390336410' }
     ]
   },
-  {
-    id: 'w2',
-    title: 'Workshop III',
-    day: 'Saturday',
-    date: '14-02-2026',
-    time: null,
-    venue: null,
-    team_size: null,
-    prize1: null,
-    prize2: null,
-    icon: Cpu,
-    description: '', 
-    color: 'from-blue-500 to-cyan-500',
-    category: 'Workshop',
-    registration_link: "#", 
-    pocs: [
-      { name: 'Joel', phone: '+91 7736278854' },
-      { name: 'Naman', phone: '+91 8127390863' }
-    ]
-  },
+  
   {
     id: 't2',
     title: 'Beat the Bot',
