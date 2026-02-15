@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import { 
   Code, Brain, Gamepad2, Globe, Mic, Coffee, Video, Users, Puzzle, 
-  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, Instagram, ArrowRight, MapPin, Clock, Trophy 
+  Lock, Terminal, Cpu, X, Calendar, Phone, Ticket, ExternalLink, MapPin, Clock, Trophy 
 } from 'lucide-react';
 import { RetroHeading } from './ArcadeElements';
 import { FadeInUp } from './ScrollAnimations';
 
-function formatDate(dateStr: string) {
-  if (!dateStr) return 'TBA';
+// Helper to format individual date strings
+function formatSingleDate(dateStr: string) {
   const cleanDate = dateStr.includes('/') ? dateStr.split('/')[0] + '-' + dateStr.split('-')[1] + '-' + dateStr.split('-')[2] : dateStr;
-   
   const [dayPart, monthPart] = cleanDate.split('-');
   const day = parseInt(dayPart, 10);
   const month = parseInt(monthPart, 10);
@@ -24,7 +23,28 @@ function formatDate(dateStr: string) {
   else if (day === 2 || day === 22) suffix = 'nd';
   else if (day === 3 || day === 23) suffix = 'rd';
 
-  return `${day}${suffix} ${monthNames[month]}`;
+  return { dayWithSuffix: `${day}${suffix}`, monthName: monthNames[month] };
+}
+
+// Main formatter capable of handling ranges (e.g. "17-02-2026 & 18-02-2026")
+function formatDate(dateStr: string) {
+  if (!dateStr) return 'TBA';
+
+  if (dateStr.includes('&')) {
+    const dates = dateStr.split('&').map(s => s.trim());
+    const firstDate = formatSingleDate(dates[0]);
+    const secondDate = formatSingleDate(dates[1]);
+
+    // If both dates are in the same month, combine them cleanly (e.g., "17th & 18th February")
+    if (firstDate.monthName === secondDate.monthName) {
+        return `${firstDate.dayWithSuffix} & ${secondDate.dayWithSuffix} ${firstDate.monthName}`;
+    }
+    // Otherwise return full dates
+    return `${firstDate.dayWithSuffix} ${firstDate.monthName} & ${secondDate.dayWithSuffix} ${secondDate.monthName}`;
+  }
+
+  const { dayWithSuffix, monthName } = formatSingleDate(dateStr);
+  return `${dayWithSuffix} ${monthName}`;
 }
 
 const events = [
@@ -47,6 +67,26 @@ const events = [
       { name: 'Keren', phone: '+91 8129498109' },
       { name: 'Joel', phone: '+91 7736278854' },
       { name: 'Libena', phone: '+91 7695856564' }
+    ]
+  },
+  {
+    id: 'w1',
+    title: 'Workshop I',
+    day: 'Saturday',
+    date: '14-02-2026',
+    time: null,
+    venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
+    icon: Cpu,
+    description: '', 
+    color: 'from-blue-500 to-cyan-500',
+    category: 'Workshop',
+    registration_link: "#", 
+    pocs: [
+      { name: 'Joel', phone: '+91 7736278854' },
+      { name: 'Naman', phone: '+91 8127390863' }
     ]
   },
   {
@@ -92,8 +132,8 @@ const events = [
   {
     id: 't6',
     title: 'Hackathon',
-    day: 'Wednesday',
-    date: '19-02-2026',
+    day: 'Wednesday & Thursday',
+    date: '19-02-2026 & 20-02-2026', // UPDATED: Multi-day format
     time: null,
     venue: null,
     team_size: null,
@@ -192,6 +232,26 @@ const events = [
     ]
   },
   {
+    id: 'w2',
+    title: 'Workshop III',
+    day: 'Saturday',
+    date: '14-02-2026',
+    time: null,
+    venue: null,
+    team_size: null,
+    prize1: null,
+    prize2: null,
+    icon: Cpu,
+    description: '', 
+    color: 'from-blue-500 to-cyan-500',
+    category: 'Workshop',
+    registration_link: "#", 
+    pocs: [
+      { name: 'Joel', phone: '+91 7736278854' },
+      { name: 'Naman', phone: '+91 8127390863' }
+    ]
+  },
+  {
     id: 't2',
     title: 'Beat the Bot',
     day: 'Tuesday',
@@ -214,8 +274,8 @@ const events = [
   {
     id: 'nt5',
     title: 'Ace Clutch',
-    day: 'Tuesday',
-    date: '17-02-2026',
+    day: 'Tuesday & Wednesday',
+    date: '17-02-2026 & 18-02-2026', // UPDATED: Multi-day format
     time: null,
     venue: null,
     team_size: null,
