@@ -247,7 +247,7 @@ const events = [
     description: 'Exhilarating multi-stage digital gaming event. Teams compete across multiple games to climb the dynamic leaderboard.',
     color: 'from-pink-500 to-rose-500',
     category: 'Non-Technical',
-    registration_link: "#", 
+    registration_link: "https://docs.google.com/forms/d/e/1FAIpQLScRIvnLkQRQ6PvGg2g2GfUCDMYHC4_SEXnsrDLPRee-_fYwcA/viewform?usp=header", 
     pocs: [
       { name: 'Priyanshu', phone: '+91 9917524263' },
       { name: 'Aayush', phone: '+91 8588802698' }
