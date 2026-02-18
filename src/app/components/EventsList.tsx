@@ -154,18 +154,18 @@ const events = [
   {
     id: 't4',
     title: 'Browser Blitz',
-    day: 'Friday',
-    date: '27-02-2026',
+    day: 'Thursday',
+    date: '19-02-2026',
     time: null,
     venue: null,
     team_size: null,
     prize1: null,
     prize2: null,
     icon: Globe,
-    description: 'Round 1: Debugging Hunt (Fix broken webpages). Round 2: Production Rescue (Fix broken React app, build errors, UI issues).',
+    description: 'Round 1: Debugging Hunt (Fix broken webpages).Round 2: Suprise round Round 3: Production Rescue (Fix broken React app, build errors, UI issues).',
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://forms.gle/MyTYyeNWWz4W2mr16", 
     pocs: [
       { name: 'Sajal', phone: '+91 7068839791' },
       { name: 'Arunima', phone: '+91 8794788693' }
