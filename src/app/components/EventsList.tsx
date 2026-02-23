@@ -267,7 +267,7 @@ const events = [
     description: 'Workshop by Pixelstack club', 
     color: 'from-blue-500 to-cyan-500',
     category: 'Workshop',
-    registration_link: "#", 
+    registration_link: "https://forms.gle/J6hYTsXMMPYxwqcR7", 
     pocs: [
       { name: 'Sajal', phone: '+91 7068839791' },
       { name: 'Arnav', phone: '+91 9144914517' }
