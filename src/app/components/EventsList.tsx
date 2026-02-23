@@ -104,7 +104,7 @@ const events = [
     description: '', 
     color: 'from-green-500 to-emerald-600',
     category: 'Technical',
-    registration_link: "#", 
+    registration_link: "https://forms.gle/atzya8gob889Ys536", 
     pocs: [
       { name: 'Akash', phone: '+91 7483515673' },
       { name: 'Canice', phone: '+91 7057569482' }
